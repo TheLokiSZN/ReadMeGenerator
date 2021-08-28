@@ -7,7 +7,7 @@ const path = require('path');
 const questions = [
     {
         type: 'input',
-        name: 'name',
+        name: 'github',
         message: 'What is your Github username',
     },
     {
@@ -15,6 +15,17 @@ const questions = [
         name: 'languages',
         message: 'What languages does this project use?',
         choices: ['Node.js', 'Javascript', 'CSS', 'HTML', 'React', 'Java', 'C++', 'C', 'Python']
+    },
+    {
+        type: 'list',
+        name: 'license',
+        message: 'What license does this project use?',
+        choices: ['None', 'mit', 'APACHE 2.0', 'ISC']
+    },
+    {
+        type: 'input',
+        name: 'title',
+        message: 'What is the name of this file',
     }
 ];
 
@@ -27,7 +38,7 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions)
     .then((answers) => {
-        writeToFile('readMe', markdownLink({...answers}))
+        writeToFile('README.md', markdownLink({...answers}))
     })
 }
 
